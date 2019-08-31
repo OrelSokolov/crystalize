@@ -1,4 +1,4 @@
-# Crystalize
+# Crystalize ![](https://travis-ci.org/OrelSokolov/crystalize.svg?branch=master)
 
 ![Logo](crystalize-logo.png)
 
