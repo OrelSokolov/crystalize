@@ -1,5 +1,7 @@
 # Crystalize
 
+![Logo](crystalize-logo.png)
+
 Crystalize is gem which helps to migrate your Ruby app to Crystal lang.
 It is not Ruby to Crystal converter. It just helps to automate some things. 
 **This gem in in early development.**
