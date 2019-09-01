@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "crystalize"
+require 'support/fixtures'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

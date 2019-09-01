@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Crystalize::Check::Meta do
-  subject { Object.new.extend(Crystalize::Check::Meta) }
+  subject { Object.new.extend(described_class) }
 
 
   context "#include_method?" do
