@@ -1,2 +1,5 @@
 #!/usr/bin/env ruby
+
+require 'crystalize'
+
 puts "Hello from crystalize"

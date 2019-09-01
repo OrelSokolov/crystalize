@@ -1,5 +1,6 @@
 require "crystalize/version"
 
-module Crystalize
-  # Your code goes here...
-end
+Dir['lib/**/**/*.rb'].each { |file| require file[4...-3] }
+
+require 'crystalize/check/literals'
+require 'crystalize/check/meta'
