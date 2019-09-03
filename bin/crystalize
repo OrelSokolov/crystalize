@@ -1,5 +1,34 @@
 #!/usr/bin/env ruby
-
+require 'bundler/setup'
 require 'crystalize'
+require 'optionparser'
 
-puts "Hello from crystalize"
+# Used to parse command line arguments via +OptionParser+
+class ARGVParser
+  # Returns parsed command line +options+
+  # @example
+  #   options = ARGVParser.parse(ARGV)
+  def self.yesno(o, args, key)
+    o == 'yes' ? args[key] = true : args[key] = false
+  end
+
+  def self.parse(options)
+    args = Hash.new
+
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = "Usage: crystalize [options]"
+      opts.separator ''
+      opts.on('-f', '--files=', 'Regex for Dir')           { |o| args[:files]   = o }
+      opts.separator ''
+      opts.on('-v', '--verbose', 'Run verbosely')          { |_| args[:verbose]      = true }
+      opts.separator ''
+      opts.on_tail("-h", "--help", "Show this message")    { abort opts.to_s }
+    end
+
+    opt_parser.parse!(options)
+    args
+  end
+end
+
+options = ARGVParser.parse(ARGV)
+Crystalize::ProjectConverter.new(options).convert

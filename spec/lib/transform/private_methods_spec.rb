@@ -38,7 +38,7 @@ describe Crystalize::Transform::PrivateMethods do
 
   it "should rename private all methods in file" do
     before = Fixtures.load('transform/private_methods/before_1.rb')
-    after = Fixtures.load('transform/private_methods/before_1.rb')
+    after_raw = Fixtures.load('transform/private_methods/after_1.rb')
 
     expect(after - before).to be_empty
   end

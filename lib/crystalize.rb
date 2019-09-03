@@ -1,6 +1,7 @@
 require "crystalize/version"
+require 'require_all'
 
-Dir['lib/**/**/*.rb'].each { |file| require file[4...-3] }
+require_all 'lib/crystalize/check'
+require_all 'lib/crystalize/transform'
+require_all 'lib'
 
-require 'crystalize/check/literals'
-require 'crystalize/check/meta'

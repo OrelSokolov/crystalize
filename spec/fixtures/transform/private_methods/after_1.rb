@@ -25,7 +25,6 @@ class A
 
   end
 
-
   public
 
   def public2

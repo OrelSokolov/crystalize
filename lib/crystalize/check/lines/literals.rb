@@ -1,7 +1,9 @@
 module Crystalize
   module Check
-    module Literals
+    module Line
+      module Literals
 
+      end
     end
   end
 end
