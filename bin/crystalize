@@ -20,9 +20,8 @@ class ARGVParser
       opts.separator ''
       opts.on('-f', '--files=', 'Regex for Dir')           { |o| args[:files]   = o }
       opts.separator ''
-      opts.on('-v', '--verbose', 'Run verbosely')          { |_| args[:verbose]      = true }
-      opts.separator ''
       opts.on_tail("-h", "--help", "Show this message")    { abort opts.to_s }
+      opts.on_tail("-version", "Show version")    { abort Crystalize::VERSION }
     end
 
     opt_parser.parse!(options)

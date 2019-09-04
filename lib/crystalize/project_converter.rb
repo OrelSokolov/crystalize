@@ -6,7 +6,7 @@ module Crystalize
 
     def convert
       files = @options[:files] ? Dir[@options[:files]] : []
-      files.each do |file|
+      files.select{|f| f.ends_with?(".rb") }.each do |file|
         converter =  CodeConverter.new(@options, File.read(file))
         converter.convert
         result = converter.new_content

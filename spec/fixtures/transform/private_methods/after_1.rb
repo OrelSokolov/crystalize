@@ -1,5 +1,5 @@
 class A
-  def public1
+  public def public1
 
   end
 
@@ -17,17 +17,14 @@ class A
 
   end
 
-  def private4; end
+  private def private4
+  end
 
-  protected
-
-  def protected1
+  protected def protected1
 
   end
 
-  public
-
-  def public2
+  public def public2
 
   end
 end
