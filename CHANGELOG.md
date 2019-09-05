@@ -1,3 +1,8 @@
+0.0.5
+-----
+- Core extensions
+- Fixes for visibility for `self.methods`
+
 0.0.4
 -----
 - Fix require directive
