@@ -1,0 +1,2 @@
+<% Dir['lib/**/*.rb'].map{|f| s = f.split("."); s.pop; s.join(".") }.sort_by(&:size).reverse.reject{|f| f == "lib/crystalize"}.each do |f| %> require "<%= f.split("/")[1..-1].join("/") %>"
+<% end %>

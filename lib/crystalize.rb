@@ -1,7 +1,14 @@
-require "crystalize/version"
-require 'require_all'
-
-require_all 'lib/crystalize/check'
-require_all 'lib/crystalize/transform'
-require_all 'lib'
+ require "crystalize/transform/lines/private_methods"
+ require "crystalize/transform/code/semicolons"
+ require "crystalize/ruby/ruby_core_extensions"
+ require "crystalize/transform/lines/literals"
+ require "crystalize/check/lines/literals"
+ require "crystalize/options_validator"
+ require "crystalize/project_converter"
+ require "crystalize/check/lines/meta"
+ require "crystalize/code_converter"
+ require "crystalize/code_line"
+ require "crystalize/version"
+ require "crystalize/support"
+ require "crystalize/code"
 
