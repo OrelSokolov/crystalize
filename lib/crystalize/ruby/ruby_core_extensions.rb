@@ -1,9 +1,17 @@
 class Anything < Object; end
 
 # def Hash(*args)
-#   Hash
+#   if args.all?{|arg| arg == Anything}
+#     Hash
+#   else
+#     Hash.new(*args)
+#   end
 # end
 #
 # def Array(*args)
-#   Array
+#   if args.all?{|arg| arg == Anything}
+#     Array
+#   else
+#     Array.new(*args)
+#   end
 # end

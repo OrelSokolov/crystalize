@@ -36,6 +36,12 @@ class A
   def public2
 
   end
+
+  private
+
+  def self.method
+
+  end
 end
 
 A.new.public1

@@ -18,7 +18,7 @@ module Crystalize
             end
             current_visibility = :public if public_in_line?(line)
 
-            if method_in_line?(line)
+            if method_in_line?(line) && !self_method_in_line?(line)
               new_lines << add_visibility_prefix_to_method(current_visibility, line, non_public_triggered)
             elsif private_in_line?(line) || protected_in_line?(line) || public_in_line?(line)
               new_lines << line_without_private(line)
@@ -57,16 +57,20 @@ module Crystalize
           line.match /[ ]*(def).*/
         end
 
+        def self_method_in_line?(line)
+          line.match /[ ]*(def)[ ]+self[.].*/
+        end
+
         def private_in_line?(line)
-          !!line.match(/^[ ]*(private)[ ]*/)
+          !!line.match(/^[ ]*(private)[ ]*$/)
         end
 
         def protected_in_line?(line)
-          !!line.match(/^[ ]*(protected)[ ]*/)
+          !!line.match(/^[ ]*(protected)[ ]*$/)
         end
 
         def public_in_line?(line)
-          !!line.match(/^[ ]*(public)[ ]*/)
+          !!line.match(/^[ ]*(public)[ ]*$/)
         end
       end
     end
