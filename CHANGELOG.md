@@ -1,3 +1,7 @@
+0.0.4
+-----
+- Fix require directive
+
 0.0.3
 ------
 - Fixes for bin
