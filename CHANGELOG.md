@@ -1,3 +1,8 @@
+0.0.3
+------
+- Fixes for bin
+- Improve logic for visibility methods transform
+
 0.0.2 
 -----
 New features:

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    crystalize (0.0.2)
+    crystalize (0.0.3)
       require_all
 
 GEM
