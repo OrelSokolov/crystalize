@@ -4,16 +4,14 @@ module Crystalize
       module PrivateMethods
         def transform_private_methods(lines)
           new_lines = []
+          current_visibility = :public
 
           lines.each do |line|
-            current_visibility = :public
-
             current_visibility = :private if private_in_line?(line)
             current_visibility = :protected if protected_in_line?(line)
             current_visibility = :public if public_in_line?(line)
 
             if method_in_line?(line)
-              # binding.pry
               new_lines << add_visibility_prefix_to_method(current_visibility, line)
             elsif private_in_line?(line) || protected_in_line?(line) || public_in_line?(line)
               new_lines << line_without_private(line)
@@ -49,15 +47,15 @@ module Crystalize
         end
 
         def private_in_line?(line)
-          line.match /.*[ ]*(private)[ ]*/
+          !!line.match(/^[ ]*(private)[ ]*/)
         end
 
         def protected_in_line?(line)
-          line.match /.*[ ]*(protected)[ ]*/
+          !!line.match(/^[ ]*(protected)[ ]*/)
         end
 
         def public_in_line?(line)
-          line.match /.*[ ]*(public)[ ]*/
+          !!line.match(/^[ ]*(public)[ ]*/)
         end
       end
     end

@@ -1,6 +1,6 @@
 class A
   def public1
-
+    puts "Hello from public 1"
   end
 
   private
@@ -37,3 +37,5 @@ class A
 
   end
 end
+
+A.new.public1

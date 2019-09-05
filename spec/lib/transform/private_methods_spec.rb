@@ -5,10 +5,7 @@ describe Crystalize::Transform::Line::PrivateMethods do
 
   lines_with_private = [
           " private ",
-          "private  ;  def method; end",
-          "private ;",
-          "def method; end; private",
-          "def method; end; private; def method; end",
+          "private ",
       ]
 
   lines_without_private = [
