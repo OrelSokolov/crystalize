@@ -5,14 +5,21 @@ module Crystalize
         def transform_private_methods(lines)
           new_lines = []
           current_visibility = :public
+          non_public_triggered = false
 
           lines.each do |line|
-            current_visibility = :private if private_in_line?(line)
-            current_visibility = :protected if protected_in_line?(line)
+            if private_in_line?(line)
+              current_visibility = :private
+              non_public_triggered = true
+            end
+            if protected_in_line?(line)
+              current_visibility = :protected
+              non_public_triggered = true
+            end
             current_visibility = :public if public_in_line?(line)
 
             if method_in_line?(line)
-              new_lines << add_visibility_prefix_to_method(current_visibility, line)
+              new_lines << add_visibility_prefix_to_method(current_visibility, line, non_public_triggered)
             elsif private_in_line?(line) || protected_in_line?(line) || public_in_line?(line)
               new_lines << line_without_private(line)
             else
@@ -27,8 +34,12 @@ module Crystalize
           ""
         end
 
-        def add_visibility_prefix_to_method(current_visibility, line)
-          " "*tabulation(line)+current_visibility.to_s + " "+ line.slice(tabulation(line), line.length)
+        def add_visibility_prefix_to_method(current_visibility, line, non_public_triggered)
+          if !non_public_triggered && current_visibility == :public
+            line
+          else
+            " "*tabulation(line)+current_visibility.to_s + " "+ line.slice(tabulation(line), line.length)
+          end
         end
 
         def tabulation(line)

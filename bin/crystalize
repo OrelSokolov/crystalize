@@ -21,7 +21,7 @@ class ARGVParser
       opts.on('-f', '--files=', 'Regex for Dir')           { |o| args[:files]   = o }
       opts.separator ''
       opts.on_tail("-h", "--help", "Show this message")    { abort opts.to_s }
-      opts.on_tail("-version", "Show version")    { abort Crystalize::VERSION }
+      opts.on_tail("--version", "Show version")    { abort Crystalize::VERSION }
     end
 
     opt_parser.parse!(options)
