@@ -32,6 +32,6 @@ class ARGVParser
   end
 end
 
-files = ARGV.pop
+files = ARGV.first.start_with?('-') ? [] : ARGV.pop
 options = ARGVParser.parse(ARGV)
 Crystalize::ProjectConverter.new(files, options).convert
