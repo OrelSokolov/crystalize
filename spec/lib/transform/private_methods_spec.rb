@@ -37,7 +37,7 @@ describe Crystalize::Transform::Line::PrivateMethods do
     before = Fixtures.load('transform/private_methods/before_1.rb').join("\n")
     after_raw = Fixtures.load('transform/private_methods/after_1.rb')
 
-    converter = Crystalize::CodeConverter.new({}, before)
+    converter = Crystalize::CodeConverter.new(Crystalize::CodeConverter::DEFAULT_OPTIONS, before)
     converter.convert
     after = converter.new_content
 

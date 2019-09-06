@@ -12,6 +12,9 @@ module Crystalize
     attr_reader :new_content
 
     NEWLINE_DELIMITER = "\n"
+    DEFAULT_OPTIONS = {
+        transform_all: true
+    }
 
     def initialize(options, content)
       @options = options
@@ -50,8 +53,8 @@ module Crystalize
     def transform_by_line(content)
       by_line(content) do |new_content, line|
         l = line
-        l = transform_array_literal(l) # if @options[:transform_array_literal]
-        l = transform_hash_literal(l) # if @options[:transform_hash_literal]
+        l = transform_array_literal(l) if @options[:transform_literals] || @options[:transform_all]
+        l = transform_hash_literal(l) if @options[:transform_literals] || @options[:transform_all]
         new_content << l
       end
     end
@@ -61,7 +64,7 @@ module Crystalize
 
     def transform_full
       @new_content = splitted_content
-      @new_content = transform_private_methods(@new_content)
+      @new_content = transform_private_methods(@new_content) if @options[:transform_private] || @options[:transform_all]
     end
 
     def splitted_content

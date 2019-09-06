@@ -18,6 +18,11 @@ class ARGVParser
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: crystalize file_regex [options]"
       opts.separator ''
+      opts.on('-f', '--files=', 'Regex for Dir')           { |o| args[:files]   = o }
+      opts.on("--transform-literals")                      {|o| args[:transform_literals] = true }
+      opts.on("--transform-private")                       {|o| args[:transform_private] = true }
+      opts.on("--transform-all")                           {|o| args[:transform_all] = true }
+      opts.separator ''
       opts.on_tail("-h", "--help", "Show this message")    { abort opts.to_s }
       opts.on_tail("--version", "Show version")    { abort Crystalize::VERSION }
     end
