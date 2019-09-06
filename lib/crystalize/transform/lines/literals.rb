@@ -3,7 +3,11 @@ module Crystalize
     module Line
       module Literals
         def transform_array_literal(line)
-          line.gsub '[]', "Array(Anything).new" unless lambda_call_in_line?(line)
+          if lambda_call_in_line?(line)
+            line
+          else
+            line.gsub '[]', "Array(Anything).new"
+          end
         end
 
         def transform_hash_literal(line)
