@@ -1,3 +1,9 @@
+0.0.6
+------
+- Fix core extensions
+- Tests for core extensions
+- Update bin interface
+
 0.0.5
 -----
 - Core extensions
