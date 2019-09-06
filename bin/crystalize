@@ -16,9 +16,7 @@ class ARGVParser
     args = Hash.new
 
     opt_parser = OptionParser.new do |opts|
-      opts.banner = "Usage: crystalize [options]"
-      opts.separator ''
-      opts.on('-f', '--files=', 'Regex for Dir')           { |o| args[:files]   = o }
+      opts.banner = "Usage: crystalize file_regex [options]"
       opts.separator ''
       opts.on_tail("-h", "--help", "Show this message")    { abort opts.to_s }
       opts.on_tail("--version", "Show version")    { abort Crystalize::VERSION }
@@ -29,5 +27,6 @@ class ARGVParser
   end
 end
 
+files = ARGV.pop
 options = ARGVParser.parse(ARGV)
-Crystalize::ProjectConverter.new(options).convert
+Crystalize::ProjectConverter.new(files, options).convert

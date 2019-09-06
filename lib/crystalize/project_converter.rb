@@ -1,11 +1,12 @@
 module Crystalize
   class ProjectConverter
-    def initialize(options)
+    def initialize(files, options)
+      @files = files
       @options = options
     end
 
     def convert
-      files = @options[:files] ? Dir[@options[:files]] : []
+      files = @files ? Dir[@files] : []
       puts "Processing #{files.size} files"
       files.select{|f| f.end_with?(".rb") }.each do |file|
         converter =  CodeConverter.new(@options, File.read(file))
