@@ -1,3 +1,8 @@
+0.0.7
+-------
+- Do not transform lambdas to Arrays
+- Update run options
+
 0.0.6
 ------
 - Fix core extensions
